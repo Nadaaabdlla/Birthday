@@ -26,6 +26,7 @@
       border-radius: 15px;
       text-align: center;
       animation: fadeIn 2s ease-in-out;
+      z-index: 10;
     }
 
     @keyframes fadeIn {
@@ -33,43 +34,41 @@
       to { opacity: 1; transform: translate(-50%, -50%); }
     }
 
-    .confetti {
+    .sticker {
       position: fixed;
-      width: 2px; /* شريط رفيع */
-      height: 20px; /* طول الشريط */
-      opacity: 0.8;
-      top: -10px;
+      font-size: 24px;
+      top: -50px;
       animation: fall linear infinite;
       z-index: 0;
-      border-radius: 5px;
     }
 
     @keyframes fall {
       0% {
         transform: translateY(0) rotate(0deg);
+        opacity: 1;
       }
       100% {
         transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="message">🎈 🎉 كل سنة وانت طيب 🎉 🎈</div>
+  <div class="message"> كل سنة وانت طيب 🎉 🎈</div>
 
   <script>
-    // توليد زينة تتساقط (شرايط ملونة)
-    const colors = ['#FF595E', '#FFCA3A', '#8AC926', '#1982C4', '#6A4C93'];
+    const stickers = ['🎂','🎉','🎈','🎁','💖','⭐','🍰','🥳'];
 
-    for (let i = 0; i < 100; i++) {
-      const confetti = document.createElement('div');
-      confetti.classList.add('confetti');
-      confetti.style.left = Math.random() * 100 + 'vw';
-      confetti.style.animationDuration = (2 + Math.random() * 3) + 's';
-      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      confetti.style.height = (15 + Math.random() * 25) + 'px'; // شرايط أطول قليلاً
-      document.body.appendChild(confetti);
+    for (let i = 0; i < 80; i++) {
+      const sticker = document.createElement('div');
+      sticker.classList.add('sticker');
+      sticker.innerText = stickers[Math.floor(Math.random() * stickers.length)];
+      sticker.style.left = Math.random() * 100 + 'vw';
+      sticker.style.animationDuration = (3 + Math.random() * 4) + 's';
+      sticker.style.fontSize = (20 + Math.random() * 20) + 'px';
+      document.body.appendChild(sticker);
     }
   </script>
 
